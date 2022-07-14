@@ -11,7 +11,8 @@ jobs:
       - name: Install j2cli
         run: |
           sudo apt-get update
-          sudo apt-get install j2cli
+          sudo apt-get install python3-pip
+          sudo pip3 install j2cli
       - name: Checkout SONiC
         run: ./sonicgit.sh
       - name: Download prebuild dependencies
