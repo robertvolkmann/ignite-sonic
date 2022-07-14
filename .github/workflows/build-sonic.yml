@@ -1,0 +1,24 @@
+name: Build SONiC image
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-sonic:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Checkout SONiC
+        run: ./sonicgit.sh
+      - name: Download prebuild dependencies
+        run: python3 ./dependencies.py
+      - name: Build image
+        run: ./build.sh
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: docker.io
+          username: robertvolkmann
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Push image
+        run: docker push robertvolkmann/ignite-sonic:202205
