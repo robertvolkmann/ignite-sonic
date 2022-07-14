@@ -7,7 +7,11 @@ jobs:
   build-sonic:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - name: Install j2cli
+        run: |
+          sudo apt-get update
+          sudo apt-get install j2cli
       - name: Checkout SONiC
         run: ./sonicgit.sh
       - name: Download prebuild dependencies
