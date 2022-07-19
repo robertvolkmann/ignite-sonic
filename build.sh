@@ -13,6 +13,6 @@ make NOBUSTER=1 NOSTRETCH=1 SONIC_BUILD_JOBS=2 target/rootfs.tar
 popd
 
 mkdir -p "${DOCKER_CONTEXT}"
-mv "${BUILD_DIR}/rootfs.tar" "${DOCKER_CONTEXT}/"
+mv "${BUILD_DIR}/target/rootfs.tar" "${DOCKER_CONTEXT}/"
 
 docker build -t robertvolkmann/ignite-sonic:202205 -f Dockerfile "${DOCKER_CONTEXT}"
