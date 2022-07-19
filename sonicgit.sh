@@ -7,8 +7,3 @@ if [ -d "${BUILD_DIR}" ];then
 fi
 
 git clone --branch ${BRANCH} --single-branch https://github.com/robertvolkmann/sonic-buildimage.git "${BUILD_DIR}"
-
-git submodule update --init --recursive
-
-echo "${BUILD_DIR}"
-git status | grep branch

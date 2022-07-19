@@ -6,6 +6,7 @@ source ./build.cfg
 
 pushd "${BUILD_DIR}"
 
+make init
 make configure NOBUSTER=1 NOSTRETCH=1 PLATFORM=vs
 make NOBUSTER=1 NOSTRETCH=1 SONIC_BUILD_JOBS=2 target/sonic-vs.img.gz
 
